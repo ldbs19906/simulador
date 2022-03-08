@@ -8,35 +8,35 @@
     <title>Simulador</title>
 </head>
 <body>
-    <h1> - Taller - Simulador de cotizador</h1>
+    <h1> - Productos de computacion  - Simulador de cotizador</h1>
     <form class="" action="index.html" method="post">
         <table>
             <tr>
                 <td><label for="">Producto</label></td>
                 <td>
-                    <select class="">
-                        <option value="">CPU</option>
-                        <option value="">Pantalla</option>
-                        <option value="">Teclado</option>
-                        <option value="">Mouse</option>
+                    <select id="form_producto" class="" name="form_producto">
+                        <option value="CPU">CPU</option>
+                        <option value="Pantalla">Pantalla</option>
+                        <option value="Teclado">Teclado</option>
+                        <option value="Mouse">Mouse</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td><label for="">Valor</label></td>
                 <td>
-                    <input type="text" name="" value="">
+                    <input id="form_valor" type="text" name="form_valor" value="">
                 </td>
             </tr>
             <tr>
                 <td><label for="">Cantidad</label></td>
                 <td>
-                    <input type="number" name="" value="">
+                    <input id="form_cantidad" type="number" name="form_cantidad" value="">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="button" name="button">Agregar Producto</button>
+                    <button type="button" name="button" onclick="agregar_producto()">Agregar Producto</button>
                 </td>
                 
             </tr>
@@ -52,12 +52,14 @@
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tabla_productos">
+            
+        
 
         </tbody>
         <tfoot>
             <th colspan="3">Total</th>
-            <th>$</th>
+            <th id="total">$</th>
         </tfoot>
     </table>
 
