@@ -15,6 +15,7 @@ function agregar_producto(){
                                             "<td>" + valor.value + "</td>"+
                                             "<td>" + cantidad.value + "</td>"+
                                             "<td name ='subtotal'>" + subtotal + "</td>"+
+                                            "<td><button onclick='eliminar_producto(this)'>Eliminar</button></td>"
                                         "</tr>";
 calcular_total();    
 
@@ -37,4 +38,12 @@ function calcular_total(){
     total.innerText = "$" + suma;
 }
 
+
+function eliminar_producto(producto){
+
+    console.log(producto.parentElement.parentElement);
+    producto.parentElement.parentElement.remove();
+    calcular_total();
+
+}
 
