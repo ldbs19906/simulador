@@ -1,49 +1,30 @@
-/*Ingreso de datos*/
+const IVA_GENERAL = 1.21;
+const IVA_REDUCIDO = 1.10;
 
-function agregar_producto(){
-    
-    let producto=document.getElementById("form_producto");
-    let valor=document.getElementById("form_valor");
-    let cantidad=document.getElementById("form_cantidad");
-
-    let datos = document.getElementById("tabla_productos");
-
-    let subtotal= Number(valor.value) * Number(cantidad.value);
-
-    datos.innerHTML = datos.innerHTML + "<tr>"+
-                                            "<td>" + producto.value + "</td>"+
-                                            "<td>" + valor.value + "</td>"+
-                                            "<td>" + cantidad.value + "</td>"+
-                                            "<td name ='subtotal'>" + subtotal + "</td>"+
-                                            "<td><button onclick='eliminar_producto(this)'>Eliminar</button></td>"
-                                        "</tr>";
-calcular_total();    
-
-    
-}
-
-/*Calcular el total de la cotizacion*/
-
-function calcular_total(){
-
-    let subtotales= document.getElementsByName('subtotal');
-    let total=document.getElementById('total');
-
-    let suma=0;
-    for(var i = 0; i < subtotales.length; i++){
-
-        suma = suma + Number(subtotales[i].innerText);
+const item1={
+    precio:prompt('Ingrese precio del producto1'),
+    cantidad: prompt('Ingrese cantidad del producto1'),
+    impuestos: IVA_GENERAL,
+    calcularTotal:function() {
+      return  this.precio * this.cantidad * this.impuestos
     }
-
-    total.innerText = "$" + suma;
 }
 
-
-function eliminar_producto(producto){
-
-    console.log(producto.parentElement.parentElement);
-    producto.parentElement.parentElement.remove();
-    calcular_total();
-
+const item2={
+    precio:prompt('Ingrese precio del producto2'),
+    cantidad:prompt('Ingrese cantidad del producto2'),
+    impuestos: IVA_REDUCIDO,
+    calcularTotal:function() {
+        return  this.precio * this.cantidad * this.impuestos
+    }
 }
 
+const factura={
+    item1,
+    item2,
+    calcularTotal:function(){
+        return this.item1.calcularTotal() + this.item2.calcularTotal();
+    }
+}
+
+alert('El total es, amplicando el Iva general y el IVA reducido:' + factura.calcularTotal());
